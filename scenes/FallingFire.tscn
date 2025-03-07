@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ev50is16b5i"]
+
+[ext_resource type="Texture2D" uid="uid://cp08l23yievm7" path="res://assets/kenney_platformerpack/PNG/Particles/fireball.png" id="1_3wivr"]
+[ext_resource type="Script" path="res://script/AreaTrigger.gd" id="2_rv1sn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60b5o"]
+radius = 43.0
+height = 110.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1yo5"]
+radius = 42.0
+height = 108.0
+
+[node name="FallingFire" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(2, 2)
+texture = ExtResource("1_3wivr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_60b5o")
+
+[node name="AreaTrigger" type="Area2D" parent="."]
+script = ExtResource("2_rv1sn")
+sceneName = "LoseScreen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTrigger"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_p1yo5")
+
+[connection signal="body_entered" from="AreaTrigger" to="AreaTrigger" method="_on_Area_Trigger_body_entered"]

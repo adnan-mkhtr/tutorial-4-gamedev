@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bc2fujtl13g10"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_xsgpf"]
+[ext_resource type="Script" path="res://script/player.gd" id="1_s0krl"]
 [ext_resource type="Texture2D" uid="uid://dhsqj8dybb7fq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -62,7 +62,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_xsgpf")
+script = ExtResource("1_s0krl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
@@ -78,3 +78,5 @@ frame = 2
 libraries = {
 "": SubResource("AnimationLibrary_sbh6e")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]

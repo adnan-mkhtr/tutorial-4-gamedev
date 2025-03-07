@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0n0ov84i4ttu"]
+
+[ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="1_pscxp"]
+[ext_resource type="Script" path="res://script/AreaTrigger.gd" id="2_74ln1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_60b5o"]
+radius = 43.0
+height = 110.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p1yo5"]
+radius = 42.0
+height = 108.0
+
+[node name="FallingFish" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+texture = ExtResource("1_pscxp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_60b5o")
+
+[node name="AreaTrigger" type="Area2D" parent="."]
+script = ExtResource("2_74ln1")
+sceneName = "LoseScreen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTrigger"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_p1yo5")
+
+[connection signal="body_entered" from="AreaTrigger" to="AreaTrigger" method="_on_Area_Trigger_body_entered"]
